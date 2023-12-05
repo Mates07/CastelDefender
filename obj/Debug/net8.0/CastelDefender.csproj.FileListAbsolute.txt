@@ -1,0 +1,14 @@
+C:\Users\Mates\source\repos\CastelDefender\bin\Debug\net8.0\CastelDefender.exe
+C:\Users\Mates\source\repos\CastelDefender\bin\Debug\net8.0\CastelDefender.deps.json
+C:\Users\Mates\source\repos\CastelDefender\bin\Debug\net8.0\CastelDefender.runtimeconfig.json
+C:\Users\Mates\source\repos\CastelDefender\bin\Debug\net8.0\CastelDefender.dll
+C:\Users\Mates\source\repos\CastelDefender\bin\Debug\net8.0\CastelDefender.pdb
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.AssemblyInfoInputs.cache
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.AssemblyInfo.cs
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.csproj.CoreCompileInputs.cache
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.dll
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\refint\CastelDefender.dll
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.pdb
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\CastelDefender.genruntimeconfig.cache
+C:\Users\Mates\source\repos\CastelDefender\obj\Debug\net8.0\ref\CastelDefender.dll
