@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CastelDefender")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94850ca3db0fb305edfb73ce74cc5591ca181173")]
 [assembly: System.Reflection.AssemblyProductAttribute("CastelDefender")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CastelDefender")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

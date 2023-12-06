@@ -1,8 +1,10 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
 Random cisla = new Random();
+string max = "dosáhl jsi maximální úrovně";
 string nedostatek = "nemáš dost peněz na koupi tohoto vylepšení.";
 int castel = 1;
 int hradby = 1;
@@ -13,7 +15,7 @@ int domy = 1;
 int den = 1;
 int armada = 1 * domy * kasarny * vez * hradby;
 int money = 50;
-int income = 10 * farma * castel;
+int income = 1 + farma * castel;
 bool proced = true;
 Console.WriteLine("Vítej v castle defendru");
 Console.WriteLine("Tvůj hrad se nachází v jižních čechách, jsi jeho první správce.");
@@ -27,7 +29,7 @@ while (proced)
     int priceKasarny = 25 * kasarny;
     int priceDomy = 25 * domy;
     int priceCastel = 25 * castel;
-    int banditi = 1 * den / 2;
+    int banditi = 5 * den;
     money += income;
     int attack = cisla.Next(10, 200);
     Console.WriteLine($"den {den}.");
@@ -53,6 +55,10 @@ while (proced)
                 {
                     Console.WriteLine(nedostatek);
                 }
+                else if (hradby >= 15)
+                {
+                    Console.WriteLine(max);
+                }
                 else
                 {
                     hradby++;
@@ -62,18 +68,22 @@ while (proced)
                     proced2 = false;
                     money -= priceHradby;
                 }
-                
-                
+
+
             }
-            else if (odpoved == "castel")
+            else if (odpoved == "castle")
             {
                 if (money < priceCastel)
                 {
                     Console.WriteLine(nedostatek);
                 }
+                else if (castel >= 15)
+                {
+                    Console.WriteLine(max);
+                }
                 else
                 {
-                     castel++;
+                    castel++;
                     Console.WriteLine($"Vylepšil jsi {odpoved} na úroveň {castel}");
                     Console.WriteLine("konec dne");
                     income = 10 * castel * farma;
@@ -87,14 +97,18 @@ while (proced)
                 {
                     Console.WriteLine(nedostatek);
                 }
+                else if (vez >= 15)
+                {
+                    Console.WriteLine(max);
+                }
                 else
                 {
-                    vez++;
-                    Console.WriteLine($"Vylepšil jsi {odpoved} na úroveň {vez}");
-                    Console.WriteLine("konec dne");
-                    armada = 1 * domy * kasarny * hradby * vez;
-                    proced2 = false;
-                    money -= priceVez;
+                vez++;
+                Console.WriteLine($"Vylepšil jsi {odpoved} na úroveň {vez}");
+                Console.WriteLine("konec dne");
+                armada = 1 * domy * kasarny * hradby * vez;
+                proced2 = false;
+                money -= priceVez;
                 }
                 
             }
@@ -103,6 +117,10 @@ while (proced)
                 if (money < priceFarma)
                 {
                     Console.WriteLine(nedostatek);
+                }
+                else if (farma >= 15)
+                {
+                    Console.WriteLine(max);
                 }
                 else
                 {
@@ -121,6 +139,10 @@ while (proced)
                 {
                     Console.WriteLine(nedostatek);
                 }
+                else if (kasarny >= 15)
+                {
+                    Console.WriteLine(max);
+                }
                 else
                 {
                     kasarny++;
@@ -137,6 +159,10 @@ while (proced)
                 if (money < priceDomy)
                 {
                     Console.WriteLine(nedostatek);
+                }
+                else if (domy >= 15)
+                {
+                    Console.WriteLine(max);
                 }
                 else
                 {
@@ -160,51 +186,55 @@ while (proced)
                 proced2 = false;
             }
         }
-        if (den == attack)
+        if (den >= 10)
         {
-            Console.WriteLine($"Na hrad útočí tlupa banditů jejich boje schopnost je {banditi}, tvá bohje schopnost je {armada}");
-            if (armada < banditi)
+            if (cisla.Next(1, 16) == 15)
             {
-                Console.WriteLine("Bohužel prohráváš na tovu armádu je jich příliš mnoho, ale máš šanci utéct. Chceš utéct");
-                string odpoved = Console.ReadLine();
-                if (odpoved == "ne")
+                Console.WriteLine($"Na hrad útočí tlupa banditů jejich boje schopnost je {banditi}, tvá bohje schopnost je {armada}");
+                if (armada < banditi)
                 {
-                    Console.WriteLine("hrdině jsi bojoval až dokonce a padl jsi v bitvě po boku svých vojáků");
-                    Console.WriteLine($"přežil jsi {den} dní");
-                    Console.WriteLine("Game Over");
-                    break;
-                }
-                if (odpoved != "ne")
-                {
-                    int nahoda = cisla.Next(1, 6);
-                    if (nahoda == 3)
+                    Console.WriteLine("Bohužel prohráváš na tovu armádu je jich příliš mnoho, ale máš šanci utéct. Chceš utéct");
+                    string odpoved = Console.ReadLine();
+                    if (odpoved == "ne")
                     {
-                        Console.WriteLine("ujíždíš na koni nicméně baditi po tobě začnou střílet z luku, jeden šíp tě trefí přímo do krku a ty umíráš");
+                        Console.WriteLine("hrdině jsi bojoval až dokonce a padl jsi v bitvě po boku svých vojáků");
                         Console.WriteLine($"přežil jsi {den} dní");
                         Console.WriteLine("Game Over");
                         break;
                     }
-                    else if (nahoda == 4)
+                    if (odpoved != "ne")
                     {
-                        Console.WriteLine("Utíkáš tajnou chodbou pod hradem nicméně když vylezeš zadrží tě královské stráž a za zbabělost jsi odsouzen k trestu smrti");
-                        Console.WriteLine($"přežil jsi {den} dní");
-                        Console.WriteLine("Game Over");
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("podařilo se ti utéct, když jsi se vrátil na hrad byl celý vypleněný");
-                        Console.WriteLine("banditi ukradly veškeré peníze, a levely tvých budov jsou nižší o jeden");
-                        castel --;
-                        hradby --;
-                        vez --;
-                        farma --;
-                        kasarny --;
-                        domy --;
-                        money = 0;
+                        int nahoda = cisla.Next(1, 6);
+                        if (nahoda == 3)
+                        {
+                            Console.WriteLine("ujíždíš na koni nicméně baditi po tobě začnou střílet z luku, jeden šíp tě trefí přímo do krku a ty umíráš");
+                            Console.WriteLine($"přežil jsi {den} dní");
+                            Console.WriteLine("Game Over");
+                            break;
+                        }
+                        else if (nahoda == 4)
+                        {
+                            Console.WriteLine("Utíkáš tajnou chodbou pod hradem nicméně když vylezeš zadrží tě královské stráž a za zbabělost jsi odsouzen k trestu smrti");
+                            Console.WriteLine($"přežil jsi {den} dní");
+                            Console.WriteLine("Game Over");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("podařilo se ti utéct, když jsi se vrátil na hrad byl celý vypleněný");
+                            Console.WriteLine("banditi ukradly veškeré peníze, a levely tvých budov jsou nižší o jeden");
+                            castel --;
+                            hradby --;
+                            vez --;
+                            farma --;
+                            kasarny --;
+                            domy --;
+                            money = 0;
+                        }
                     }
                 }
             }
+            
             else
             {
                 Console.WriteLine($"banditi sice odvážně zaútočí, ale tvé armádě nesahají ani po kotníky. Banditi byly poraženi a jako válečnou kořist si získak {den} goldů");
